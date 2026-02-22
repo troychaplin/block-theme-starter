@@ -1,0 +1,1 @@
+console.log('Block Theme Starter script loaded');
