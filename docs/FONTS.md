@@ -7,10 +7,10 @@ Custom font sizes are defined in `theme.json` under `settings.typography.fontSiz
 | Name | Slug | Size (max) | Fluid Min | Fluid Max | Fluid? |
 |---|---|---|---|---|---|
 | Small | `small` | `0.875rem` (14px) | — | — | Auto |
-| Medium | `medium` | `1.125rem` (18px) | `1rem` (16px) | `1.125rem` (18px) | Yes |
-| Large | `large` | `1.75rem` (28px) | `1.5rem` (24px) | `1.75rem` (28px) | Yes |
-| Extra Large | `x-large` | `2.25rem` (36px) | `1.85rem` (29.6px) | `2.25rem` (36px) | Yes |
-| Extra Extra Large | `xx-large` | `3.25rem` (52px) | `2.5rem` (40px) | `3.25rem` (52px) | Yes |
+| Medium | `medium` | `1.125rem` (18px) | `0.875rem` (14px) | `1.125rem` (18px) | Yes |
+| Large | `large` | `1.75rem` (28px) | `1.25rem` (20px) | `1.75rem` (28px) | Yes |
+| Extra Large | `x-large` | `2.25rem` (36px) | `1.5rem` (24px) | `2.25rem` (36px) | Yes |
+| Extra Extra Large | `xx-large` | `3.25rem` (52px) | `2rem` (32px) | `3.25rem` (52px) | Yes |
 
 ## How Fluid Typography Works
 
@@ -18,9 +18,9 @@ When `fluid` is enabled, WordPress generates a `clamp()` function that smoothly 
 
 ```css
 /* Example: Large size output */
-font-size: clamp(1.5rem, calc(1.5rem + ((1.75 - 1.5) * ((100vw - 320px) / 1280px))), 1.75rem);
-                  ↑                                                                      ↑
-                  min (mobile)                                                            max (desktop)
+font-size: clamp(1.25rem, calc(1.25rem + ((1.75 - 1.25) * ((100vw - 320px) / 1280px))), 1.75rem);
+                  ↑                                                                        ↑
+                  min (mobile)                                                              max (desktop)
 ```
 
 - **Below 320px viewport**: font locks at the `min` value
@@ -31,13 +31,13 @@ font-size: clamp(1.5rem, calc(1.5rem + ((1.75 - 1.5) * ((100vw - 320px) / 1280px
 
 The growth percentage increases with size, so larger headings shrink more aggressively on mobile while body text stays stable.
 
-| Name | Min (px) | Max (px) | Growth | Typical Use |
-|---|---|---|---|---|
-| Small | 14 | 14 | — | Captions, labels, fine print |
-| Medium | 16 | 18 | 12.5% | Body text, paragraphs |
-| Large | 24 | 28 | 16.7% | Subheadings (h3, h4) |
-| Extra Large | 29.6 | 36 | 21.6% | Section headings (h2) |
-| Extra Extra Large | 40 | 52 | 30% | Page titles (h1), hero text |
+| Name | Min (px) | Max (px) | Range | Growth | Typical Use |
+|---|---|---|---|---|---|
+| Small | 14 | 14 | — | — | Captions, labels, fine print |
+| Medium | 14 | 18 | 4px | 28.6% | Body text, paragraphs |
+| Large | 20 | 28 | 8px | 40% | Subheadings (h3, h4) |
+| Extra Large | 24 | 36 | 12px | 50% | Section headings (h2) |
+| Extra Extra Large | 32 | 52 | 20px | 62.5% | Page titles (h1), hero text |
 
 ## Values at Common Breakpoints
 
@@ -46,10 +46,10 @@ Approximate rendered sizes across viewports:
 | Name | 375px (Mobile) | 768px (Tablet) | 1280px (Desktop) | 1600px+ |
 |---|---|---|---|---|
 | Small | 14px | 14px | 14px | 14px |
-| Medium | 16.1px | 16.7px | 17.5px | 18px |
-| Large | 24.1px | 25.2px | 26.9px | 28px |
-| Extra Large | 29.8px | 31.8px | 34.5px | 36px |
-| Extra Extra Large | 40.3px | 43.5px | 48.9px | 52px |
+| Medium | 14.2px | 15.4px | 17.2px | 18px |
+| Large | 20.3px | 22.8px | 26.2px | 28px |
+| Extra Large | 24.5px | 28.2px | 33.2px | 36px |
+| Extra Extra Large | 32.9px | 38.9px | 47.2px | 52px |
 
 ## Note on Small Size
 
@@ -72,5 +72,5 @@ WordPress generates CSS custom properties for each size:
 font-size: var(--wp--preset--font-size--large);
 
 /* Resolves to the clamp() value */
-font-size: clamp(1.5rem, calc(1.5rem + ...), 1.75rem);
+font-size: clamp(1.25rem, calc(1.25rem + ...), 1.75rem);
 ```
