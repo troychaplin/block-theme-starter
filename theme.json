@@ -65,11 +65,57 @@
 			]
 		},
 		"typography": {
+			"defaultFontSizes": false,
+			"fluid": true,
 			"fontFamilies": [
 				{
 					"fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
 					"name": "System Font",
 					"slug": "system-font"
+				}
+			],
+			"fontSizes": [
+				{
+					"fluid": true,
+					"name": "Small",
+					"size": "0.875rem",
+					"slug": "small"
+				},
+				{
+					"fluid": {
+						"max": "1.125rem",
+						"min": "1rem"
+					},
+					"name": "Medium",
+					"size": "1.125rem",
+					"slug": "medium"
+				},
+				{
+					"fluid": {
+						"max": "1.75rem",
+						"min": "1.5rem"
+					},
+					"name": "Large",
+					"size": "1.75rem",
+					"slug": "large"
+				},
+				{
+					"fluid": {
+						"max": "2.25rem",
+						"min": "1.85rem"
+					},
+					"name": "Extra Large",
+					"size": "2.25rem",
+					"slug": "x-large"
+				},
+				{
+					"fluid": {
+						"max": "3.25rem",
+						"min": "2.5rem"
+					},
+					"name": "Extra Extra Large",
+					"size": "3.25rem",
+					"slug": "xx-large"
 				}
 			]
 		},
@@ -79,8 +125,8 @@
 		"spacing": {
 			"padding": {
 				"bottom": "0",
-				"left": "2rem",
-				"right": "2rem",
+				"left": "var(--wp--preset--spacing--60)",
+				"right": "var(--wp--preset--spacing--60)",
 				"top": "0"
 			}
 		}
