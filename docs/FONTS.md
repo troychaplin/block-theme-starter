@@ -27,15 +27,58 @@ Font size presets are mapped to heading elements in `theme.json` styles:
 | `h6` | `medium` (italic) | 14px → 18px |
 | Body | `medium` | 14px → 18px |
 
+## CSS Custom Properties
+
+WordPress generates the following custom properties on `:root`:
+
+```css
+--wp--preset--font-size--small: 0.875rem;
+--wp--preset--font-size--medium: clamp(0.875rem, 0.875rem + ((1.125 - 0.875) * ((100vw - 320px) / 1280px)), 1.125rem);
+--wp--preset--font-size--large: clamp(1.25rem, 1.25rem + ((1.75 - 1.25) * ((100vw - 320px) / 1280px)), 1.75rem);
+--wp--preset--font-size--x-large: clamp(1.5rem, 1.5rem + ((2.25 - 1.5) * ((100vw - 320px) / 1280px)), 2.25rem);
+--wp--preset--font-size--xx-large: clamp(2rem, 2rem + ((3.25 - 2) * ((100vw - 320px) / 1280px)), 3.25rem);
+--wp--preset--font-size--xxx-large: clamp(2.5rem, 2.5rem + ((4.5 - 2.5) * ((100vw - 320px) / 1280px)), 4.5rem);
+```
+
+## CSS Output
+
+Each fluid size generates a `clamp()` value. Below is the resolved output for each:
+
+```css
+/* Small — static, no fluid scaling */
+font-size: var(--wp--preset--font-size--small);
+/* outputs: 0.875rem (14px) */
+
+/* Medium — 14px → 18px */
+font-size: var(--wp--preset--font-size--medium);
+/* outputs: clamp(0.875rem, 0.875rem + ((1.125 - 0.875) * ((100vw - 320px) / 1280px)), 1.125rem) */
+
+/* Large — 20px → 28px */
+font-size: var(--wp--preset--font-size--large);
+/* outputs: clamp(1.25rem, 1.25rem + ((1.75 - 1.25) * ((100vw - 320px) / 1280px)), 1.75rem) */
+
+/* Extra Large — 24px → 36px */
+font-size: var(--wp--preset--font-size--x-large);
+/* outputs: clamp(1.5rem, 1.5rem + ((2.25 - 1.5) * ((100vw - 320px) / 1280px)), 2.25rem) */
+
+/* Extra Extra Large — 32px → 52px */
+font-size: var(--wp--preset--font-size--xx-large);
+/* outputs: clamp(2rem, 2rem + ((3.25 - 2) * ((100vw - 320px) / 1280px)), 3.25rem) */
+
+/* Extra Extra Extra Large — 40px → 72px */
+font-size: var(--wp--preset--font-size--xxx-large);
+/* outputs: clamp(2.5rem, 2.5rem + ((4.5 - 2.5) * ((100vw - 320px) / 1280px)), 4.5rem) */
+```
+
 ## How Fluid Typography Works
 
 When `fluid` is enabled, WordPress generates a `clamp()` function that smoothly scales font sizes between a minimum and maximum viewport width (defaults to 320px and 1600px):
 
 ```css
-/* Example: Large size output */
-font-size: clamp(1.25rem, calc(1.25rem + ((1.75 - 1.25) * ((100vw - 320px) / 1280px))), 1.75rem);
-                  ↑                                                                        ↑
-                  min (mobile)                                                              max (desktop)
+/* Formula */
+clamp(min, min + ((max - min) * ((100vw - 320px) / 1280px)), max)
+       ↑                                                       ↑
+       locks at mobile                                         locks at desktop
 ```
 
 - **Below 320px viewport**: font locks at the `min` value
@@ -78,16 +121,4 @@ The theme uses a system font stack, avoiding external font loading for optimal p
 
 ```
 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif
-```
-
-## Usage in Templates
-
-WordPress generates CSS custom properties for each size:
-
-```css
-/* CSS custom property */
-font-size: var(--wp--preset--font-size--large);
-
-/* Resolves to the clamp() value */
-font-size: clamp(1.25rem, calc(1.25rem + ...), 1.75rem);
 ```

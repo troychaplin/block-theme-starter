@@ -14,6 +14,35 @@ Custom spacing sizes are defined in `theme.json` under `settings.spacing.spacing
 | X-Large | `70` | `min(3rem, 4vw)` | Yes |
 | 2X-Large | `80` | `min(4.5rem, 6vw)` | Yes |
 
+## CSS Custom Properties
+
+WordPress generates the following custom properties on `:root`:
+
+```css
+--wp--preset--spacing--20: 0.25rem;
+--wp--preset--spacing--30: 0.5rem;
+--wp--preset--spacing--40: min(0.75rem, 1vw);
+--wp--preset--spacing--50: min(1.5rem, 2vw);
+--wp--preset--spacing--60: min(2.25rem, 3vw);
+--wp--preset--spacing--70: min(3rem, 4vw);
+--wp--preset--spacing--80: min(4.5rem, 6vw);
+```
+
+## CSS Output
+
+The custom properties resolve directly to the `size` value. Use them in block markup via spacing controls or reference them in custom CSS:
+
+```css
+/* Variable usage */
+padding: var(--wp--preset--spacing--20);    /* 0.25rem */
+padding: var(--wp--preset--spacing--30);    /* 0.5rem */
+padding: var(--wp--preset--spacing--40);    /* min(0.75rem, 1vw) */
+padding: var(--wp--preset--spacing--50);    /* min(1.5rem, 2vw) */
+padding: var(--wp--preset--spacing--60);    /* min(2.25rem, 3vw) */
+padding: var(--wp--preset--spacing--70);    /* min(3rem, 4vw) */
+padding: var(--wp--preset--spacing--80);    /* min(4.5rem, 6vw) */
+```
+
 ## How `min()` Works
 
 The `min()` function picks whichever value is smaller. This creates fluid spacing that scales with the viewport on narrow screens but caps at a fixed `rem` value on wider screens.
@@ -56,15 +85,3 @@ The `vw` multiplier follows a ratio of roughly `rem value × 1.33`:
 ## Why Fixed for 2X-Small and X-Small?
 
 At 4px and 8px these values are already minimal. Scaling them further on mobile would make them imperceptible, so they remain fixed `rem` values.
-
-## Usage in Templates
-
-WordPress generates CSS custom properties from these sizes. Use them in block markup via the spacing controls or reference them directly:
-
-```css
-/* CSS custom property */
-padding: var(--wp--preset--spacing--50);
-
-/* Resolves to */
-padding: min(1.5rem, 2vw);
-```
