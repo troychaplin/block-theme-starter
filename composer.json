@@ -1,0 +1,23 @@
+{
+	"name": "troychaplin/block-theme-starter",
+	"description": "A starter block theme for WordPress.",
+	"type": "wordpress-theme",
+	"license": "GPL-2.0-or-later",
+    "autoload": {
+		"classmap": [
+			"classes/"
+		]
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.3.0"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"format": "phpcbf",
+		"lint": "phpcs"
+	}
+}
