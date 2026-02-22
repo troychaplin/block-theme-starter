@@ -31,27 +31,27 @@
 				},
 				{
 					"name": "Small",
-					"size": "0.75rem",
+					"size": "min(0.75rem, 1vw)",
 					"slug": "40"
 				},
 				{
 					"name": "Medium",
-					"size": "1.5rem",
+					"size": "min(1.5rem, 2vw)",
 					"slug": "50"
 				},
 				{
 					"name": "Large",
-					"size": "2.25rem",
+					"size": "min(2.25rem, 3vw)",
 					"slug": "60"
 				},
 				{
 					"name": "X-Large",
-					"size": "3rem",
+					"size": "min(3rem, 4vw)",
 					"slug": "70"
 				},
 				{
 					"name": "2X-Large",
-					"size": "4.5rem",
+					"size": "min(4.5rem, 6vw)",
 					"slug": "80"
 				}
 			],
