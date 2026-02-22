@@ -11,6 +11,21 @@ Custom font sizes are defined in `theme.json` under `settings.typography.fontSiz
 | Large | `large` | `1.75rem` (28px) | `1.25rem` (20px) | `1.75rem` (28px) | Yes |
 | Extra Large | `x-large` | `2.25rem` (36px) | `1.5rem` (24px) | `2.25rem` (36px) | Yes |
 | Extra Extra Large | `xx-large` | `3.25rem` (52px) | `2rem` (32px) | `3.25rem` (52px) | Yes |
+| Extra Extra Extra Large | `xxx-large` | `4.5rem` (72px) | `2.5rem` (40px) | `4.5rem` (72px) | Yes |
+
+## Heading Mapping
+
+Font size presets are mapped to heading elements in `theme.json` styles:
+
+| Element | Preset | Size |
+|---|---|---|
+| `h1` | `xxx-large` | 40px → 72px |
+| `h2` | `xx-large` | 32px → 52px |
+| `h3` | `x-large` | 24px → 36px |
+| `h4` | `large` | 20px → 28px |
+| `h5` | `medium` | 14px → 18px |
+| `h6` | `medium` (italic) | 14px → 18px |
+| Body | `medium` | 14px → 18px |
 
 ## How Fluid Typography Works
 
@@ -34,10 +49,11 @@ The growth percentage increases with size, so larger headings shrink more aggres
 | Name | Min (px) | Max (px) | Range | Growth | Typical Use |
 |---|---|---|---|---|---|
 | Small | 14 | 14 | — | — | Captions, labels, fine print |
-| Medium | 14 | 18 | 4px | 28.6% | Body text, paragraphs |
-| Large | 20 | 28 | 8px | 40% | Subheadings (h3, h4) |
-| Extra Large | 24 | 36 | 12px | 50% | Section headings (h2) |
-| Extra Extra Large | 32 | 52 | 20px | 62.5% | Page titles (h1), hero text |
+| Medium | 14 | 18 | 4px | 28.6% | Body text, paragraphs (h5, h6) |
+| Large | 20 | 28 | 8px | 40% | Subheadings (h4) |
+| Extra Large | 24 | 36 | 12px | 50% | Section headings (h3) |
+| Extra Extra Large | 32 | 52 | 20px | 62.5% | Section headings (h2) |
+| Extra Extra Extra Large | 40 | 72 | 32px | 80% | Page titles (h1), hero text |
 
 ## Values at Common Breakpoints
 
@@ -50,6 +66,7 @@ Approximate rendered sizes across viewports:
 | Large | 20.3px | 22.8px | 26.2px | 28px |
 | Extra Large | 24.5px | 28.2px | 33.2px | 36px |
 | Extra Extra Large | 32.9px | 38.9px | 47.2px | 52px |
+| Extra Extra Extra Large | 41.4px | 52.2px | 65.5px | 72px |
 
 ## Note on Small Size
 

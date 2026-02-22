@@ -116,6 +116,15 @@
 					"name": "Extra Extra Large",
 					"size": "3.25rem",
 					"slug": "xx-large"
+				},
+				{
+					"fluid": {
+						"max": "4.5rem",
+						"min": "2.5rem"
+					},
+					"name": "Extra Extra Extra Large",
+					"size": "4.5rem",
+					"slug": "xxx-large"
 				}
 			]
 		},
@@ -125,7 +134,7 @@
 		"elements": {
 			"h1": {
 				"typography": {
-					"fontSize": "4.5rem"
+					"fontSize": "var(--wp--preset--font-size--xxx-large)"
 				}
 			},
 			"h2": {
@@ -151,8 +160,7 @@
 			"h6": {
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--medium)",
-					"fontStyle": "italic",
-					"fontWeight": "400"
+					"fontStyle": "italic"
 				}
 			}
 		},
